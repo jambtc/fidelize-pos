@@ -43,23 +43,10 @@ function show_easy_numpad() {
                         </tr>
                     </table>
                     <center>
-<<<<<<< HEAD
                     <button class="btn btn-primary token" id="token" name='token' type='button'>
                         <span id='waiting_span-token' class='smaller'>Conferma</span>
                     </button>
-=======
-                      <small>
-                        <button class="btn btn-success btn-sm done" id="done" name='confirm' type='button'>
-                          <i class="fab fa-btc smaller"></i>&nbsp;<span id='waiting_span-btc' class="smaller">bitcoin</span>
-                        </button>
-                      </small>
 
-                      <small>
-                        <button class="btn btn-primary btn-sm token" id="token" name='token' type='button'>
-                          <i class="fab fa-ethereum smaller"></i>&nbsp;<span id='waiting_span-token' class="smaller">token&nbsp;&nbsp;</span>
-                        </button>
-                      </small>
->>>>>>> a7b530ae7a7b1b20ad5c1f99174c88fa34347b3e
                     </center>
                 </div>
             </div>

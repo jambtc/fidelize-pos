@@ -12,8 +12,10 @@ $pos=Pos::model()->findByPk($BtcPayServerIDPOS);
 //RICERCA GATEWAY PER INVIARE COMANDI PERSONALIZZATI
 $merchants=Merchants::model()->findByPk($pos->id_merchant);
 $settings=Settings::loadUser($merchants->id_user);
+$gateways=Gateways::model()->findByPk($settings->id_gateway);
 
 // url creazione invoices
+$urlController = Yii::app()->createUrl('invoices/'.$gateways->action_controller); // controller che crea la transazione bitcoin
 $urlTokenController = Yii::app()->createUrl('invoices/token'); // controller che crea la transazione per il token
 
 // CERCO L'INDIRIZZO DEL TOKEN. SE PRESENTE AUTORIZZO LA CREAZIONE DELL'INVOICE, ALTRIMENTI NISBA...
@@ -103,8 +105,6 @@ $myPos = <<<JS
         });
     });
 
-<<<<<<< HEAD
-=======
     bitcoinInvoice.addEventListener('click', function(){
         event.preventDefault();
         var amount_val = $('#easy-numpad-output').text();
@@ -153,7 +153,6 @@ $myPos = <<<JS
     });
 
 
->>>>>>> a7b530ae7a7b1b20ad5c1f99174c88fa34347b3e
 
 JS;
 Yii::app()->clientScript->registerScript('myPos', $myPos, CClientScript::POS_END);

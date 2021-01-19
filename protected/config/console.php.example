@@ -1,18 +1,11 @@
 <?php
 
-<<<<<<< HEAD
 $libsPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'../../../fidelize-packages';
 Yii::setPathOfAlias('libs', $libsPath);
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.
-=======
-// This is the configuration for yiic console application.
-// Any writable CConsoleApplication properties can be configured here.
-$libsPath = dirname(__FILE__).DIRECTORY_SEPARATOR.'../../../napay-packages';
-Yii::setPathOfAlias('libs', $libsPath);
 
->>>>>>> a7b530ae7a7b1b20ad5c1f99174c88fa34347b3e
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Console Application',

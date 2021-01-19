@@ -33,8 +33,6 @@
 						<a href="<?php echo Yii::app()->createUrl('site/contactForm'); ?>" target="_blank">
 							 <i class="fa fa-bug"></i><?php echo Yii::t('lang','Bug report');?></a>
 					</li>
-<<<<<<< HEAD
-=======
 
 					<li>
 						<a href="<?php echo Yii::app()->createUrl('settings/index',array('id'=>crypt::Encrypt(Yii::app()->user->objUser['id_user'])));?>">
@@ -48,7 +46,6 @@
 					</li>
 
 
->>>>>>> a7b530ae7a7b1b20ad5c1f99174c88fa34347b3e
 				</ul>
 			<?php } ?>
 		</nav>

@@ -8,11 +8,8 @@ Yii::import('libs.NaPacks.Push');
 Yii::import('libs.ethereum.eth');
 Yii::import('libs.Utils.Utils');
 
-<<<<<<< HEAD
-=======
 Yii::import('libs.BTCPay.BTCPayWebRequest');
 Yii::import('libs.BTCPay.BTCPay');
->>>>>>> a7b530ae7a7b1b20ad5c1f99174c88fa34347b3e
 
 require_once Yii::app()->params['libsPath'] . '/ethereum/web3/vendor/autoload.php';
 
@@ -218,10 +215,6 @@ class InvoicesController extends Controller
 		}
      	echo CJSON::encode($send_json);
 	}
-<<<<<<< HEAD
-=======
-
-
 
 	/**
 	 * action BTCPAY SERVER Transaction
@@ -839,5 +832,4 @@ class InvoicesController extends Controller
     // 	echo CJSON::encode($send_json);
 	// }
 
->>>>>>> a7b530ae7a7b1b20ad5c1f99174c88fa34347b3e
 }
