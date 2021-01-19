@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 // $yiiVersion = 'yii';
+=======
+>>>>>>> a7b530ae7a7b1b20ad5c1f99174c88fa34347b3e
 $yiiVersion = 'yii-1.1.22';
 
 // change the following paths if necessary

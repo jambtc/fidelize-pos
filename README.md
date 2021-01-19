@@ -3,7 +3,7 @@ This is a fork of Napay POS
 
 A POS (Point of sale) is all you need to start earning bitcoins.
 
-[![Screenshot of NaPay PWA app](css/images/screenshot.png)](https://napay.napoliblockchain.it)
+[![Screenshot of POS app](css/images/screenshot2.png)](https://pos.napoliblockchain.it)
 
 
 
