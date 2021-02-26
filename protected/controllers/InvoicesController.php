@@ -131,10 +131,10 @@ class InvoicesController extends Controller
 	 		$invoice_timestamp = $timestamp;
 
 	 		//calcolo expiration time
-			// $storeSettings = Settings::loadStore($pos->id_store);
-	 		// $totalseconds = $storeSettings->invoice_expiration * 60; //invoice_expiration è in minuti, * 60 lo trasforma in secondi
-			$storeSettings = Settings::load();
-	 		$totalseconds = $storeSettings->poa_expiration * 60; //invoice_expiration è in minuti, * 60 lo trasforma in secondi
+			// $settings = Settings::loadStore($pos->id_store);
+	 		// $totalseconds = $settings->invoice_expiration * 60; //invoice_expiration è in minuti, * 60 lo trasforma in secondi
+			$settings = Settings::load();
+	 		$totalseconds = $settings->poa_expiration * 60; //invoice_expiration è in minuti, * 60 lo trasforma in secondi
 	 		$expiration_timestamp = $timestamp + $totalseconds; //DEFAULT = 15 MINUTES
 
 			// TODO: al momento il token è peggato 1/1 sull'euro
@@ -200,7 +200,34 @@ class InvoicesController extends Controller
 
 			//eseguo lo script che si occuperà in background di verificare lo stato dell'invoice appena creata...
 			$cmd = Yii::app()->basePath.DIRECTORY_SEPARATOR.'yiic receive --id='.crypt::Encrypt($invoice->id_token);
-			Utils::execInBackground($cmd);
+			// Utils::execInBackground($cmd);
+
+			if (substr(php_uname(), 0, 7) == "Windows"){
+		      pclose(popen("start /B ". $cmd, "r"));
+		    } else {
+				$phpseclib = __DIR__ . '/../extensions/phpseclib/vendor/phpseclib/phpseclib/phpseclib/bootstrap.php';
+				require_once $phpseclib;
+				if (true === file_exists($phpseclib) &&
+						true === is_readable($phpseclib))
+				{
+						require_once $phpseclib;
+						// \phpseclib\Autoloader::register();
+				} else {
+						throw new Exception('$phpseclib Library could not be loaded');
+				}
+				$ssh = new \phpseclib\Net\SSH2('localhost', 22);
+				// if ($expected != $ssh->getServerPublicHostKey()) {
+				// 	throw new \Exception('Host key verification failed');
+				// }
+
+
+		      // $ssh = \phpseclib->createSSH2('localhost');
+		      if (!$ssh->login(crypt::Decrypt($settings->sshuser), crypt::Decrypt($settings->sshpassword))) {
+		        return array('error' => 'Login to localhost server failed');
+		      }
+		      $action = $cmd . " > /dev/null &";
+		      $ssh->exec($action);
+		    }
 
 			//finalmente ritorno all'app e restituisco l'url con il qr-code della transazione da pagare!!!
 			$send_json = array(

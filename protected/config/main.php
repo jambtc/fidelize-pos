@@ -95,9 +95,9 @@ return array(
 			),
 
 		//SSH LIBRARY
-		'phpseclib' => array(
-    	'class' => 'ext.phpseclib.vendor.autoload'
-    ),
+		// 'phpseclib' => array(
+    	// 	'class' => 'ext.phpseclib.vendor.autoload'
+    	// ),
 
 
 		// MIE CLASSI
